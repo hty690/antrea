@@ -56,6 +56,7 @@ var (
 )
 
 func BenchmarkHTTPRequest(b *testing.B) {
+	skipIfNotBenchmarkTest(b)
 	skipIfNotIPv4Cluster(b)
 	for _, scale := range []struct{ requests, policyRules int }{
 		{100000, 0},
@@ -71,6 +72,7 @@ func BenchmarkHTTPRequest(b *testing.B) {
 }
 
 func BenchmarkRealizeNetworkPolicy(b *testing.B) {
+	skipIfNotBenchmarkTest(b)
 	skipIfNotIPv4Cluster(b)
 	for _, policyRules := range []int{5000, 10000, 15000} {
 		b.Run(fmt.Sprintf("RealizeNetworkPolicy%d", policyRules), func(b *testing.B) {
@@ -80,6 +82,7 @@ func BenchmarkRealizeNetworkPolicy(b *testing.B) {
 }
 
 func BenchmarkCustomizeHTTPRequest(b *testing.B) {
+	skipIfNotBenchmarkTest(b)
 	skipIfNotIPv4Cluster(b)
 	if *customizeRequests == 0 {
 		b.Skip("The value of perf.http.requests=0, skipped")
@@ -88,6 +91,7 @@ func BenchmarkCustomizeHTTPRequest(b *testing.B) {
 }
 
 func BenchmarkCustomizeRealizeNetworkPolicy(b *testing.B) {
+	skipIfNotBenchmarkTest(b)
 	skipIfNotIPv4Cluster(b)
 	if *customizePolicyRules == 0 {
 		b.Skip("The value of perf.http.policy_rules=0, skipped")

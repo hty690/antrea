@@ -103,7 +103,7 @@ else
     manifest_args="$manifest_args --no-np"
 fi
 
-COMMON_IMAGES_LIST=("gcr.io/kubernetes-e2e-test-images/agnhost:2.8" "projects.registry.vmware.com/library/busybox" "projects.registry.vmware.com/antrea/nginx" "projects.registry.vmware.com/antrea/perftool" "projects.registry.vmware.com/antrea/ipfix-collector:v0.5.4" "networkstatic/iperf3" "sirot/netperf-latest" "ricoli/hey")
+COMMON_IMAGES_LIST=("gcr.io/kubernetes-e2e-test-images/agnhost:2.8" "projects.registry.vmware.com/library/busybox" "projects.registry.vmware.com/antrea/nginx" "projects.registry.vmware.com/antrea/perftool" "projects.registry.vmware.com/antrea/ipfix-collector:v0.5.4" "networkstatic/iperf3" "sirot/netperf-latest")
 for image in "${COMMON_IMAGES_LIST[@]}"; do
     for i in `seq 3`; do
         docker pull $image && break
@@ -137,9 +137,9 @@ function run_test {
   fi
   sleep 1
   if $coverage; then
-      go test -v -timeout=70m antrea.io/antrea/test/e2e -provider=kind --logs-export-dir=$ANTREA_LOG_DIR --coverage --coverage-dir $ANTREA_COV_DIR
+      go test -v -timeout=70m antrea.io/antrea/test/e2e/benchmark_test.go -provider=kind --logs-export-dir=$ANTREA_LOG_DIR --coverage --coverage-dir $ANTREA_COV_DIR
   else
-      go test -v -timeout=65m antrea.io/antrea/test/e2e -provider=kind --logs-export-dir=$ANTREA_LOG_DIR
+      go test -v -timeout=65m antrea.io/antrea/test/e2e/benchmark_test.go -provider=kind --logs-export-dir=$ANTREA_LOG_DIR
   fi
   $TESTBED_CMD destroy kind
 }

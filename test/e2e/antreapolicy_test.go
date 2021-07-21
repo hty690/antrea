@@ -2663,6 +2663,7 @@ func waitForResourceDelete(namespace, name string, resource string, timeout time
 }
 
 func TestAntreaPolicy(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -2767,6 +2768,7 @@ func TestAntreaPolicy(t *testing.T) {
 }
 
 func TestAntreaPolicyStatus(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -2866,6 +2868,7 @@ func (data *TestData) waitForACNPRealized(t *testing.T, name string) error {
 // TestANPNetworkPolicyStatsWithDropAction tests antreanetworkpolicystats can correctly collect dropped packets stats from ANP if
 // networkpolicystats feature is enabled
 func TestANPNetworkPolicyStatsWithDropAction(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -3010,6 +3013,7 @@ func TestANPNetworkPolicyStatsWithDropAction(t *testing.T) {
 }
 
 func TestAntreaClusterNetworkPolicyStats(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)

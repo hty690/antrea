@@ -65,6 +65,7 @@ func antctlCoverageArgs(antctlPath string) []string {
 
 // TestAntctlAgentLocalAccess ensures antctl is accessible in an agent Pod.
 func TestAntctlAgentLocalAccess(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -128,6 +129,7 @@ func copyAntctlToNode(data *TestData, nodeName string, antctlName string, nodeAn
 // the kubernetes cluster. It uses the antctl client binary copied from the controller
 // Pod.
 func TestAntctlControllerRemoteAccess(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -189,6 +191,7 @@ func TestAntctlControllerRemoteAccess(t *testing.T) {
 // TestAntctlVerboseMode ensures no unexpected outputs during the execution of
 // the antctl client.
 func TestAntctlVerboseMode(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -266,6 +269,7 @@ func runAntctProxy(nodeName string, antctlName string, nodeAntctlPath string, pr
 // TestAntctlProxy validates "antctl proxy" for both the Antrea Controller and
 // Agent API.
 func TestAntctlProxy(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	const proxyPort = 8001
 
 	skipIfHasWindowsNodes(t)

@@ -215,6 +215,7 @@ func validatePortsInAnnotation(t *testing.T, r *require.Assertions, nplAnnotatio
 }
 
 func TestNPLAddPod(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNotIPv4Cluster(t)
 	skipIfHasWindowsNodes(t)
 
@@ -236,6 +237,7 @@ func TestNPLAddPod(t *testing.T) {
 // - Create a client Pod and test traffic through netcat.
 // - Delete the nginx test Pods and verify that the iptables rules are deleted.
 func NPLTestMultiplePods(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	r := require.New(t)
 
 	annotation := make(map[string]string)
@@ -277,6 +279,7 @@ func NPLTestMultiplePods(t *testing.T) {
 
 // NPLTestPodAddMultiPort tests NodePortLocal functionalities for a Pod with multiple ports.
 func NPLTestPodAddMultiPort(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	r := require.New(t)
 
 	node := nodeName(0)
@@ -339,6 +342,7 @@ func NPLTestPodAddMultiPort(t *testing.T) {
 // NPLTestLocalAccess validates that a NodePortLocal Pod can be accessed locally
 // from the host network namespace.
 func NPLTestLocalAccess(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	r := require.New(t)
 
 	annotation := make(map[string]string)
@@ -379,6 +383,7 @@ func NPLTestLocalAccess(t *testing.T) {
 // - Restart Antrea Agent Pod.
 // - Verify Pod Annotation, iptables rules and traffic to test Pod.
 func TestNPLMultiplePodsAgentRestart(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNotIPv4Cluster(t)
 	skipIfHasWindowsNodes(t)
 
@@ -451,6 +456,7 @@ func TestNPLMultiplePodsAgentRestart(t *testing.T) {
 // - Restart Antrea Agent Pods.
 // - Verify that updated port range is being used for NPL.
 func TestNPLChangePortRangeAgentRestart(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNotIPv4Cluster(t)
 	skipIfHasWindowsNodes(t)
 

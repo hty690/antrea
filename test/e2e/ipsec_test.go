@@ -57,6 +57,7 @@ func (data *TestData) readSecurityAssociationsStatus(nodeName string) (up int, c
 // the IPSec tunnel, by creating multiple Pods across distinct Nodes and having
 // them ping each other.
 func TestIPSecTunnelConnectivity(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "IPSec tunnel does not work with Kind")
 	skipIfIPv6Cluster(t)
 	skipIfNumNodesLessThan(t, 2)
@@ -92,6 +93,7 @@ func TestIPSecTunnelConnectivity(t *testing.T) {
 // non-encrypted mode, the previously created tunnel ports are deleted
 // correctly.
 func TestIPSecDeleteStaleTunnelPorts(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "IPSec tunnel does not work with Kind")
 	skipIfIPv6Cluster(t)
 	skipIfNumNodesLessThan(t, 2)
