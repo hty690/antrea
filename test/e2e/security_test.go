@@ -45,6 +45,7 @@ const (
 
 // TestUserProvidedCert tests the selfSignedCert=false case. It covers dynamic server certificate.
 func TestUserProvidedCert(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -114,6 +115,7 @@ func TestUserProvidedCert(t *testing.T) {
 
 // TestSelfSignedCert tests the selfSignedCert=true case.
 func TestSelfSignedCert(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)

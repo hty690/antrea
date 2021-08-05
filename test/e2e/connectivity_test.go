@@ -93,6 +93,7 @@ func (data *TestData) testPodConnectivitySameNode(t *testing.T) {
 // TestPodConnectivitySameNode checks that Pods running on the same Node can reach each other, by
 // creating multiple Pods on the same Node and having them ping each other.
 func TestPodConnectivitySameNode(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	data, err := setupTest(t)
 	if err != nil {
 		t.Fatalf("Error when setting up test: %v", err)
@@ -135,6 +136,7 @@ func (data *TestData) testHostPortPodConnectivity(t *testing.T) {
 
 // TestHostPortPodConnectivity checks that a Pod with hostPort set is reachable.
 func TestHostPortPodConnectivity(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -212,6 +214,7 @@ func (data *TestData) testPodConnectivityDifferentNodes(t *testing.T) {
 // TestPodConnectivityDifferentNodes checks that Pods running on different Nodes can reach each
 // other, by creating multiple Pods across distinct Nodes and having them ping each other.
 func TestPodConnectivityDifferentNodes(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNumNodesLessThan(t, 2)
 
 	data, err := setupTest(t)
@@ -277,6 +280,7 @@ func (data *TestData) redeployAntrea(t *testing.T, enableIPSec bool) {
 // TestPodConnectivityAfterAntreaRestart checks that restarting antrea-agent does not create
 // connectivity issues between Pods.
 func TestPodConnectivityAfterAntreaRestart(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -305,6 +309,7 @@ func TestPodConnectivityAfterAntreaRestart(t *testing.T) {
 // just testing L2 connectivity betwwen 2 Pods on the same Node, and the default behavior of the
 // br-int bridge is to implement normal L2 forwarding.
 func TestOVSRestartSameNode(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "test not valid for the netdev datapath type")
 	skipIfNotIPv4Cluster(t)
 	skipIfHasWindowsNodes(t)
@@ -367,6 +372,7 @@ func TestOVSRestartSameNode(t *testing.T) {
 // after deleting them and force-restarting the OVS daemons. We also make sure that Pod connectivity
 // still works.
 func TestOVSFlowReplay(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "stopping OVS daemons create connectivity issues")
 	skipIfHasWindowsNodes(t)
 
@@ -458,6 +464,7 @@ func TestOVSFlowReplay(t *testing.T) {
 // the conntrack implementation of the OVS userspace datapath did not support v4/v6 fragmentation
 // and this test was failing when Antrea was running on a Kind cluster.
 func TestPingLargeMTU(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	numPods := 2
 	skipIfNumNodesLessThan(t, numPods)
 

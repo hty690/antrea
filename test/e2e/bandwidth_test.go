@@ -95,7 +95,7 @@ func benchmarkBandwidthService(t *testing.T, endpointNode, clientNode string) {
 // TestBenchmarkBandwidthServiceLocalAccess runs the bandwidth benchmark of service
 // traffic between a Pod and an Endpoint on same Node.
 func TestBenchmarkBandwidthServiceLocalAccess(t *testing.T) {
-	skipIfNotBenchmarkTest(t)
+	// skipIfNotBenchmarkTest(t)
 	benchmarkBandwidthService(t, controlPlaneNodeName(), controlPlaneNodeName())
 }
 

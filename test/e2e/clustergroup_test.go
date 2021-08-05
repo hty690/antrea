@@ -315,6 +315,7 @@ func testClusterGroupConversionV1A2AndV1A3(t *testing.T) {
 }
 
 func TestClusterGroup(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)

@@ -138,6 +138,7 @@ type testFlow struct {
 }
 
 func TestFlowAggregator(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, v4Enabled, v6Enabled, err := setupTestWithIPFIXCollector(t)

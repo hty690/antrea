@@ -172,6 +172,7 @@ func TestNetworkPolicyStats(t *testing.T) {
 }
 
 func TestDifferentNamedPorts(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -316,6 +317,7 @@ func (data *TestData) setupDifferentNamedPorts(t *testing.T) (checkFn func(), cl
 // 1. The traffic initiated from the host network namespace cannot be dropped.
 // 2. The traffic initiated externally that access the Pod via NodePort service can be dropped (skipped if provider is kind).
 func TestDefaultDenyIngressPolicy(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -389,6 +391,7 @@ func TestDefaultDenyIngressPolicy(t *testing.T) {
 }
 
 func TestDefaultDenyEgressPolicy(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -451,6 +454,7 @@ func TestDefaultDenyEgressPolicy(t *testing.T) {
 // https://github.com/kubernetes/kubernetes/blob/v1.20.0-alpha.0/test/e2e/network/network_policy.go#L1365
 // https://github.com/kubernetes/kubernetes/pull/93583
 func TestEgressToServerInCIDRBlock(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNotIPv6Cluster(t)
 	skipIfHasWindowsNodes(t)
 
@@ -527,6 +531,7 @@ func TestEgressToServerInCIDRBlock(t *testing.T) {
 // https://github.com/kubernetes/kubernetes/blob/v1.20.0-alpha.0/test/e2e/network/network_policy.go#L1444
 // https://github.com/kubernetes/kubernetes/pull/93583
 func TestEgressToServerInCIDRBlockWithException(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNotIPv6Cluster(t)
 	skipIfHasWindowsNodes(t)
 
@@ -596,6 +601,7 @@ func TestEgressToServerInCIDRBlockWithException(t *testing.T) {
 }
 
 func TestNetworkPolicyResyncAfterRestart(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -717,6 +723,7 @@ func TestNetworkPolicyResyncAfterRestart(t *testing.T) {
 }
 
 func TestIngressPolicyWithoutPortNumber(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -803,6 +810,7 @@ func TestIngressPolicyWithoutPortNumber(t *testing.T) {
 }
 
 func TestIngressPolicyWithEndPort(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)

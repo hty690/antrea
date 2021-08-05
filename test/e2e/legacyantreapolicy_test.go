@@ -2140,6 +2140,7 @@ func cleanupLegacyTestCaseServicesAndGroups(t *testing.T, c *TestCase) {
 }
 
 func TestLegacyAntreaPolicy(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "This test is for legacy API groups and is almost the same as new API groups'.")
 	skipIfHasWindowsNodes(t)
 	data, err := setupTest(t)
@@ -2302,6 +2303,7 @@ func TestLegacyAntreaPolicyStatus(t *testing.T) {
 // TestLegacyANPNetworkPolicyStatsWithDropAction tests antreanetworkpolicystats can correctly collect dropped packets stats from ANP if
 // networkpolicystats feature is enabled
 func TestLegacyANPNetworkPolicyStatsWithDropAction(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "This test is for legacy API groups and is almost the same as new API groups'.")
 	skipIfHasWindowsNodes(t)
 	data, err := setupTest(t)
@@ -2446,6 +2448,7 @@ func TestLegacyANPNetworkPolicyStatsWithDropAction(t *testing.T) {
 }
 
 func TestLegacyAntreaClusterNetworkPolicyStats(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "This test is for legacy API groups and is almost the same as new API groups'.")
 	skipIfHasWindowsNodes(t)
 	data, err := setupTest(t)

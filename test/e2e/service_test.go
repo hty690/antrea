@@ -28,6 +28,7 @@ import (
 // TestClusterIP tests traffic from Nodes and Pods to ClusterIP Service.
 func TestClusterIP(t *testing.T) {
 	// TODO: Support for dual-stack and IPv6-only clusters
+	skipIfNotBenchmarkTest(t)
 	skipIfIPv6Cluster(t)
 
 	data, err := setupTest(t)
@@ -110,6 +111,7 @@ func (data *TestData) createClusterIPServiceAndBackendPods(t *testing.T, name st
 // https://github.com/kubernetes/kubernetes/blob/ea0764452222146c47ec826977f49d7001b0ea8c/test/e2e/windows/service.go#L42
 // Issue: https://github.com/antrea-io/antrea/issues/2289
 func TestNodePortWindows(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNoWindowsNodes(t)
 
 	data, err := setupTest(t)

@@ -36,6 +36,7 @@ import (
 
 // TestDeploy is a "no-op" test that simply performs setup and teardown.
 func TestDeploy(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -49,6 +50,7 @@ func TestDeploy(t *testing.T) {
 // deploying a busybox Pod, then waiting for the K8s apiserver to report the new IP address for that
 // Pod, and finally verifying that the IP address is in the Pod Network CIDR for the cluster.
 func TestPodAssignIP(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -215,6 +217,7 @@ func (data *TestData) testDeletePod(t *testing.T, podName string, nodeName strin
 // TestDeletePod creates a Pod, then deletes it, and checks that the veth interface (in the Node
 // network namespace) and the OVS port for the container get removed.
 func TestDeletePod(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	data, err := setupTest(t)
 	if err != nil {
 		t.Fatalf("Error when setting up test: %v", err)
@@ -279,6 +282,7 @@ func TestAntreaGracefulExit(t *testing.T) {
 // address. If the 2 IP addresses match, then it is an error. This is not a perfect test, as it
 // assumes that IP addresses are assigned in-order and not randomly.
 func TestIPAMRestart(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -342,6 +346,7 @@ func TestIPAMRestart(t *testing.T) {
 // gateway routes is updated correctly, i.e. stale routes (for Nodes which are no longer in the
 // cluster) are removed and missing routes are added.
 func TestReconcileGatewayRoutesOnStartup(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNumNodesLessThan(t, 2)
 	skipIfHasWindowsNodes(t)
 
@@ -615,6 +620,7 @@ func getRoundNumber(data *TestData, podName string) (uint64, error) {
 // the previous "round" which are no longer needed (e.g. in case of changes to the cluster / to
 // Network Policies) are removed correctly.
 func TestDeletePreviousRoundFlowsOnStartup(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfRunCoverage(t, "Stopping Agent does not work with Coverage")
 	skipIfHasWindowsNodes(t)
 
@@ -744,6 +750,7 @@ func TestDeletePreviousRoundFlowsOnStartup(t *testing.T) {
 // There might be ARP packets other than GARP sent if there is any unintentional
 // traffic. So we just check the number of ARP packets is greater than 3.
 func TestGratuitousARP(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfNotIPv4Cluster(t)
 	skipIfHasWindowsNodes(t)
 
@@ -797,6 +804,7 @@ func TestGratuitousARP(t *testing.T) {
 // TestClusterIdentity verifies that the antrea-cluster-identity ConfigMap is
 // populated correctly by the Antrea Controller.
 func TestClusterIdentity(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)

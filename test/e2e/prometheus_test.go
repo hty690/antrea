@@ -233,6 +233,7 @@ func getPrometheusEndpoint(t *testing.T, data *TestData) (string, int32) {
 // TestPrometheusMetricsOnController validates that metrics are returned from Prometheus client on the Antrea Controller
 // and checks that metrics in antreaControllerMetrics exists in the controller output
 func TestPrometheusMetricsOnController(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfPrometheusDisabled(t)
 	skipIfHasWindowsNodes(t)
 
@@ -248,6 +249,7 @@ func TestPrometheusMetricsOnController(t *testing.T) {
 // TestPrometheusMetricsOnAgent validates that metrics are returned from Prometheus client on the Antrea Agent
 // and checks that metrics in antreaAgentMetrics exists in the agent's output
 func TestPrometheusMetricsOnAgent(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfPrometheusDisabled(t)
 	skipIfHasWindowsNodes(t)
 
@@ -311,6 +313,7 @@ func testMetricsFromPrometheusServer(t *testing.T, data *TestData, prometheusJob
 }
 
 func TestPrometheusServerControllerMetrics(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfPrometheusDisabled(t)
 	skipIfHasWindowsNodes(t)
 
@@ -324,6 +327,7 @@ func TestPrometheusServerControllerMetrics(t *testing.T) {
 }
 
 func TestPrometheusServerAgentMetrics(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfPrometheusDisabled(t)
 	skipIfHasWindowsNodes(t)
 

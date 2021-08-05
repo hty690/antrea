@@ -39,6 +39,7 @@ func skipIfProxyDisabled(t *testing.T, data *TestData) {
 }
 
 func TestProxyServiceSessionAffinity(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfProviderIs(t, "kind", "#881 Does not work in Kind, needs to be investigated.")
 	skipIfHasWindowsNodes(t)
 
@@ -110,6 +111,7 @@ func testProxyServiceSessionAffinity(ipFamily *corev1.IPFamily, ingressIPs []str
 }
 
 func TestProxyHairpin(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -149,6 +151,7 @@ func testProxyHairpin(ipFamily *corev1.IPFamily, data *TestData, t *testing.T) {
 }
 
 func TestProxyEndpointLifeCycle(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
@@ -210,6 +213,7 @@ func testProxyEndpointLifeCycle(ipFamily *corev1.IPFamily, data *TestData, t *te
 }
 
 func TestProxyServiceLifeCycle(t *testing.T) {
+	skipIfNotBenchmarkTest(t)
 	skipIfHasWindowsNodes(t)
 
 	data, err := setupTest(t)
